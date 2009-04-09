@@ -17,7 +17,7 @@ $_pea_options = array(
 	//	'/$action/$id';$controller=blog'
 	'routes' => array(
 		'/$controller/$action/$id',
-		'/;$controller=welcome'
+		'/;$controller=welcome',
 	),
 	
 	// Database connection credentials
@@ -28,5 +28,9 @@ $_pea_options = array(
 		'database' => ''
 	),
 	
+	'env' => array(
+		'clapton' => false,
+	),
+
 	);
 ?>
