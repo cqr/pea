@@ -1,0 +1,9 @@
+TODO
+----
+
+* Port SQLOOP ORM to pea module
+* fix naming schema problems
+* peadmin
+  * basic administrative features
+  * possible editing features in the browser?
+* before and after filters for modules
