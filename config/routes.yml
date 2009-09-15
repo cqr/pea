@@ -1,0 +1,13 @@
+# This is your base url. For instance, if your application lives
+# at google.com/pea_app/, you should use /pea_app/
+# NOTE: Feature not yet implemented.
+base_url: /
+# These are your routes. The markup is something like
+# format;overrides, and placing a $ before a name means
+# that it will be sent as a value to the dispatcher.
+# EXAMPLES:
+#	'/cart;$controller=shopping,$action=show_cart'
+#	'/$action/$id';$controller=blog'
+routes:
+	- /$controller/$action/$id;
+	- /;$controller=welcome

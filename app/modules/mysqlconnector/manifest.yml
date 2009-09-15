@@ -1,0 +1,6 @@
+name: MySQL Connector
+description: A simplified MySQL adapter
+version: 1.0
+require:
+    -mysql.php
+    -connect.php

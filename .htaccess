@@ -1,2 +1,3 @@
 RewriteEngine On
-RewriteRule .* pea.php [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule .* public/.pea.php

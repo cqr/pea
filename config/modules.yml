@@ -1,0 +1,6 @@
+active:
+    - mysqlconnector
+    - sqloop
+    - peadmin
+
+installed: 
