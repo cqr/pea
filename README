@@ -1,2 +1,5 @@
-pea 1
-This is my attempt to build a simple MVC framework in PHP and in under 50k.
+this is pea.
+
+pea is a simple MVC framework in PHP. It's pretty much full stack. There's a simple dispatcher, a simple module system, and that's pretty much it. However, because the module system is so simple, it's also really powerful, so the modules allow for some pretty fancy stuff. I have a module for connecting to a MySQL database, a simple ORM, and a simple administrative interface, all in modules. Pretty fancy.
+
+There's still a whole bunch that needs to get properly added. There is no real need for a new PHP-based CMS, or a new PHP-based framework for that matter, but I needed something to build what I really want to make on top of. And those of you who know me know what pea is gonna be.
