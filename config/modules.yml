@@ -1,5 +1,4 @@
 active:
-    - mysqlconnector
     - sqloop
     - peadmin
 

@@ -20,6 +20,7 @@ class peaPod
 {
 	
 	private $options;
+	private $loaded_modules = array();
 	
 	function __construct($opts)
 	{
@@ -51,12 +52,30 @@ class peaPod
 	
 	function load_pea($module)
 	{
-		if(file_exists(BASEDIR."/modules/$module/manifest.yml")){
-		    ${'_pea_'.$module.'_manifest'} = Spyc::YAMLLoad(BASEDIR."/modules/$module/manifest.yml");
-		    foreach((array)${'_pea_'.$module.'_manifest'}['require'] as $require_file){
-		        require_once BASEDIR."/modules/$module/$require_file";
+		if ($this->module_exists($module)) {
+		    ${'_pea_'.$module.'_manifest'} = Spyc::YAMLLoad(BASEDIR."/app/modules/$module/manifest.yml");
+		    if (array_key_exists('depends', (array)${'_pea_'.$module.'_manifest'})) {
+		        foreach((array)${'_pea_'.$module.'_manifest'}['depends'] as $dependency){
+		            if (in_array($dependency, $this->loaded_modules)) {
+		                return true;
+		            } elseif ($this->module_exists($dependency)) {
+		                $this->load_pea($dependency);
+		            } else {
+		                die("Unresolved dependencies: $module depends on $dependency, which was not found.");
+		            }
+		        }
 		    }
+		    foreach((array)${'_pea_'.$module.'_manifest'}['require'] as $require_file){
+		        require_once BASEDIR."/app/modules/$module/$require_file";
+		    }
+		    array_push($this->loaded_modules, $module);
+		    return true;
 		}
+	}
+	
+	private function module_exists($module)
+	{
+	    return file_exists(BASEDIR."/app/modules/$module/manifest.yml");
 	}
 }
 ?>
