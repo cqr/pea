@@ -11,19 +11,19 @@
 		body {
   		margin-top: 1.0em;
   		background-color: #61ff93;
-		  font-family: "Helvetica,Arial,FreeSans"; 
-  		color: #000000;
+		  font-family: Helvetica, Arial, Sans-Serif; 
+  		color: #000;
     }
     #container {
       margin: 0 auto;
       width: 700px;
     }
-		h1 { font-size: 3.8em; color: #9e006c; margin-bottom: 3px; }
+		h1 { font-size: 3.8em; color: #060; margin-bottom: 3px; }
 		h1 .small { font-size: 0.4em; }
 		h1 a { text-decoration: none }
-		h2 { font-size: 1.5em; color: #9e006c; }
-    h3 { text-align: center; color: #9e006c; }
-    a { color: #9e006c; }
+		h2 { font-size: 1.5em; color: #060; }
+    h3 { text-align: center; color: #060; }
+    a { color: #060; }
     .description { font-size: 1.2em; margin-bottom: 30px; margin-top: 30px; font-style: italic;}
     .download { float: right; }
 		pre { background: #000; color: #fff; padding: 15px;}
@@ -49,17 +49,63 @@
       <span class="small">by <a href="http://github.com/chrisrhoden">chrisrhoden</a></span></h1>
 
     <div class="description">
-      A browser-based development environment for non-programmers.
+      pea is a browser-based development environment for non-programmers.
     </div>
 
-    <p>Placeholder text</p><h2>Dependencies</h2>
-<p>PHP, Apache, MySQL</p>
-<h2>Install</h2>
-<p>For now, installation is a bit of a pain. More on this later.</p>
+    <p>
+      As of now, pea is a simple little framework, written in PHP, which is designed to run on the LAMP
+      stack. It's been rewritten and is now entirely OO. It's quite fast and extremely modular.
+    </p>
+    <p>
+      Because of the way that pea and the pod(module) system was designed, it's mostly just a very
+      lightweight MVC framework which can be extended. Pods are extremely powerful, and can be set
+      up to completely rewrite the page or hijack 404 errors.
+    </p>
+    <h2>Dependencies</h2>
+    <p>
+      Because pea is designed to take advantage of the LAMP stack to the fullest, it is not
+      fully compatible with any other webservers, database engines, or operating systems
+      at this time. All testing is being done on this platform.
+    </p>
+    <p>
+      PHP 5 is required for higher-level object-oriented code in PHP, so it is a dependency
+      of pea.
+    </p>
+    <h2>Install</h2>
+    <p>
+      Unfortunately, installation is not currently a easy as we would like it to be in the future.
+      You can obtain tarballs or zipped archives of the code from this page, extract them on your
+      webserver, and set the document root to the ``public'' directory within the project hierarchy.
+      From there, you only need to edit configuration files, which, by convention, are stored in the
+      ``config'' directory.
+    </p>
 <h2>License</h2>
-<p>MIT License</p>
+<p><pre>Pea and all related libraries and files Copyright (c) 2009 chrisrhoden
+Spyc Copyright (c) 2005-2006 Chris Wanstrath, 2006-2009 Vlad Andersen
+ 
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+ 
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+ 
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.</pre></p>
 <h2>Authors</h2>
-<p>chrisrhoden (carhoden@gmail.com)<br/>      </p>
+<p>
+  chrisrhoden <script type="text/javascript">document.write(
+"(<n uers='znvygb:pneubqra\100tznvy\056pbz'>pneubqra\100tznvy\056pbz<\057n>)".replace(/[a-zA-Z]/g, function(c){return String.fromCharCode((c<="Z"?90:122)>=(c=c.charCodeAt(0)+13)?c:c-26);}));
+</script>
+</p>
 
 
     <h2>Download</h2>
