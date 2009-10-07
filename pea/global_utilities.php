@@ -35,6 +35,7 @@ function render_template($template_file, $variables){
         require(BASEDIR.'/app/views/template.php');
         $main_body = str_replace('%CHILD%', $main_body, ob_clean_contents());
     }
+    
     return $main_body;
 }
 function ob_clean_contents(){
