@@ -1,6 +1,6 @@
 use: default
 default:
-    hostname: phpeas.netcitr.us
-    username: ph_pea
-    password: password
-    database: ph_peas
+    hostname: localhost
+    username: root
+    password: 
+    database: phpea
