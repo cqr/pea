@@ -28,25 +28,18 @@ class peaPod
 		foreach($opts as $opt => $val){
 			$this->options[$opt] = $val;
 		}
-		for($i=0; $i< count($this->options['routes']); $i++) {
-		    $this->options['routes'][$i] = new peaRoute($this->options['routes'][$i]);
-		}
 	}
 	
 	function run($uri)
 	{
-		foreach($this->options['routes'] as $r){
-			if ($r->matches($uri)) {
-			    if ($r->controller != NULL) {
-			        $controller = strtolower($r->controller) . "Controller";
-			        $controller = new $controller;
-			        $page = $controller->run(array_merge($_GET, $_POST, $r->variables));
-			        //ob_start('ob_gzhandler');
-			        echo $page;
-			        return;
-			    }
-			}
-		}
+	    $route = peaRoute::findMatch($uri, $this->options['routes']);
+	    if ( $route && $route->controller != NULL ){
+	        $controller = strtolower($r->controller) . "Controller";
+	        $controller = new $controller;
+	        $page = $controller->run(array_merge($_GET, $_POST, $r->variables));
+	        echo $page;
+	        return;
+	    }
 		die("Error: no route matches '$uri'.");
 	}
 	

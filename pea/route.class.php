@@ -76,5 +76,16 @@ class peaRoute
 	{
 	    if(method_exists($this, $function)) return $this->$function();
 	}
+	
+	static function findMatch($needle, $haystack)
+	{
+	    foreach($haystack as $potential_route){
+	        $potential_route = new peaRoute($potential_route);
+	        if ( $potential_route->matches($needle) ){
+	            return $potential_route;
+            }
+        }
+    return false;
+    }
 
 }
