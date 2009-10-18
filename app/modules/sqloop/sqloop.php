@@ -1,2 +1,2 @@
 <?php
-print_r($_pea_dbConnector);
+SqloopBase->connect($_pea_dbConnector);

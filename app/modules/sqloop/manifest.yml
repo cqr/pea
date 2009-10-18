@@ -5,3 +5,4 @@ require:
     -sqloopbase.class.php
     -sqloop.php
 depends: mysqlconnector
+autoloader: SqloopBase->autoload($class);

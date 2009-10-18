@@ -65,6 +65,11 @@ class peaPod
 		            }
 		        }
 		    }
+		    if (array_key_exists('autoloader', (array)${'_pea_'.$module.'_manifest'})) {
+		        foreach((array)${'_pea_'.$module.'_manifest'}['autoloader'] as $autoloader){
+		            
+		        }
+		    }
 		    foreach((array)${'_pea_'.$module.'_manifest'}['require'] as $require_file){
 		        require_once BASEDIR."/app/modules/$module/$require_file";
 		    }
