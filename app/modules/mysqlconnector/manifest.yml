@@ -3,4 +3,5 @@ description: A simplified MySQL adapter
 version: 1.0
 require:
     -mysql.php
-    -connect.php
+receives:
+    database_connect: MySQLConnector::ConnectWithConfig

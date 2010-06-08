@@ -6,7 +6,7 @@ class MySQLConnector
 	var $result;
 	var $count;
 	
-	function __construct($server, $username, $password, $database )
+	public function __construct($server, $username, $password, $database )
 	{
 		$this->server = $server;
 		$this->username = $username;
@@ -17,7 +17,7 @@ class MySQLConnector
 				die("Unable to connect to database");
 	}
 	
-	function sendRequest( $request )
+	public function sendRequest( $request )
 	{
 	    $this->result=mysql_query($request);
 		if (is_resource($this->result)) {
@@ -28,7 +28,7 @@ class MySQLConnector
 		return $self;
 	}
 
-	function getResult($sql = NULL)
+	public function getResult($sql = NULL)
 	{
 		if (!isset($sql)) {
 			$this->sendRequest($sql);
@@ -43,7 +43,7 @@ class MySQLConnector
 		return false;
 	}
 
-	function getCount($sql = NULL)
+	public function getCount($sql = NULL)
 	{
 		if (!isset($sql))
 		{
@@ -56,5 +56,16 @@ class MySQLConnector
 		}
 
 		return false;
+	}
+	
+	public static function ConnectWithConfig(){
+	    $_pea_dbConfig = Spyc::YAMLLoad(CONFIGDIR.'/database.yml');
+        peaMessenger::Send('database_connected', new MySQLConnector(
+            $_pea_dbConfig[$_pea_dbConfig['use']]['hostname'],
+            $_pea_dbConfig[$_pea_dbConfig['use']]['username'],
+            $_pea_dbConfig[$_pea_dbConfig['use']]['password'],
+            $_pea_dbConfig[$_pea_dbConfig['use']]['database']
+            )
+        );
 	}	
 }

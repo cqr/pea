@@ -9,6 +9,7 @@
 // This class requires peaRoute
 require_once(BASEDIR.'/pea/route.class.php');
 require_once(BASEDIR.'/pea/baseController.class.php');
+require_once(BASEDIR.'/pea/messenger.class.php');
 
 /**
  * peaPod Class
@@ -66,6 +67,11 @@ class peaPod
 		    foreach((array)${'_pea_'.$module.'_manifest'}['require'] as $require_file){
 		        require_once BASEDIR."/app/modules/$module/$require_file";
 		    }
+		    if (array_key_exists('receives', (array)${'_pea_'.$module.'_manifest'})) {
+		        foreach((array)${'_pea_'.$module.'_manifest'}['receives'] as $message => $listener){
+		            peaMessenger::RegisterListener($message, $listener);
+		        }
+		    }
 		    array_push($this->loaded_modules, $module);
 		    return true;
 		} else {
@@ -76,6 +82,11 @@ class peaPod
 	private function module_exists($module)
 	{
 	    return file_exists(BASEDIR."/app/modules/$module/manifest.yml");
+	}
+	
+	public function __call($message, $args) {
+	    array_unshift($args, $message);
+	    call_user_func_array('peaMessenger::Send', $args);
 	}
 }
 ?>
