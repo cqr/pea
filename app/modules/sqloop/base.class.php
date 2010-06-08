@@ -3,16 +3,20 @@ class SqloopBase{
     
     private static $connection, $connected; 
     
-    static function Connect($connection){
+    static function Connect($connection)
+    {
         self::$connection = $connection;
         self::$connected = true;
     }
     
-    public function __construct(){
+    public function __construct()
+    {
         self::EnsureConnected();
+        echo get_class($this);
     }
     
-    public static function EnsureConnected(){
+    public static function EnsureConnected()
+    {
         if (!self::$connected){
             peaMessenger::Send('database_connect');
         }
