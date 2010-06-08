@@ -61,11 +61,13 @@ class peaPod
 		    }
 		    if (array_key_exists('autoloader', (array)${'_pea_'.$module.'_manifest'})) {
 		        foreach((array)${'_pea_'.$module.'_manifest'}['autoloader'] as $autoloader){
-		            
+		            peaAutoLoader::AddLoader($autoloader);
 		        }
 		    }
-		    foreach((array)${'_pea_'.$module.'_manifest'}['require'] as $require_file){
-		        require_once BASEDIR."/app/modules/$module/$require_file";
+		    if (array_key_exists('require', (array)${'_pea_'.$module.'_manifest'})) {
+		        foreach((array)${'_pea_'.$module.'_manifest'}['require'] as $require_file){
+		            require_once BASEDIR."/app/modules/$module/$require_file";
+		        }
 		    }
 		    if (array_key_exists('receives', (array)${'_pea_'.$module.'_manifest'})) {
 		        foreach((array)${'_pea_'.$module.'_manifest'}['receives'] as $message => $listener){
@@ -87,6 +89,20 @@ class peaPod
 	public function __call($message, $args) {
 	    array_unshift($args, $message);
 	    call_user_func_array('peaMessenger::Send', $args);
+	}
+	
+	static function AutoLoad($class) {
+	    if(preg_match('/^\w+Controller$/',$class)){
+            if(file_exists(BASEDIR."/app/controllers/$class.php")){
+                require(BASEDIR."/app/controllers/$class.php");
+                return true;
+            } else {
+                die("Error: unable to load controller $class.");
+            }
+        } elseif(file_exists(BASEDIR."/app/models/$class.php")){
+            require(BASEDIR."/app/models/$class.php");
+        }
+        return false;
 	}
 }
 ?>

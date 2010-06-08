@@ -3,17 +3,17 @@
 session_start();
 define('BASEDIR', dirname(__FILE__).'/..');
 define('CONFIGDIR', BASEDIR.'/config');
+
+
+// Autoloading offloaded to our autoloader
+require_once 'autoloader.class.php';
 function __autoload($class){
-    if(preg_match('/^\w+Controller$/',$class)){
-        if(file_exists(BASEDIR."/app/controllers/$class.php")){
-            require(BASEDIR."/app/controllers/$class.php");
-        } else {
-            die("Error: unable to load controller $class.");
-        }
-    } elseif(file_exists(BASEDIR."/app/models/$class.php")){
-        require(BASEDIR."/app/models/$class.php");
-    }
+    peaAutoLoader::Load($class);
 }
+
+// register the base autoloader
+peaAutoLoader::AddLoader('peaPod::AutoLoad');
+
 $uri = explode('?',$_SERVER['REQUEST_URI'],2);
 $uri = $uri[0];
 define('REQUEST_URI', $uri);

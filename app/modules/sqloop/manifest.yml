@@ -1,9 +1,8 @@
 name: Sequeloop
 description: A simple, tiny ORM for PHP and MySQL which is tightly integrated with pea.
 version: 0.5
-require:
-    -sqloopbase.class.php
 depends: mysqlconnector
+require: base.class.php
 receives:
     database_connected: SqloopBase::Connect 
 autoloader: SqloopBase->autoload($class);

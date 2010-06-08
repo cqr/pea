@@ -8,7 +8,11 @@ class SqloopBase{
         self::$connected = true;
     }
     
-    public function __call($message, $arguments) {
+    public function __construct(){
+        self::EnsureConnected();
+    }
+    
+    public static function EnsureConnected(){
         if (!self::$connected){
             peaMessenger::Send('database_connect');
         }
@@ -16,4 +20,5 @@ class SqloopBase{
             die('unable to connect to database');
         }
     }
+    
 }
