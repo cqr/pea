@@ -44,7 +44,6 @@ class peaRoute
 	    if($this->size >= count($uri)){
 	        $this->values = array();
 	        foreach($uri as $index => $section){
-	            //echo "$section and {$this->route[$index]}\n";
 	            if($this->route[$index][0] == '$') {
 	                $this->values[substr($this->route[$index],1)] = $section;
 	            } elseif($this->route[$index] != $section) {

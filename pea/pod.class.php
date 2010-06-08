@@ -34,9 +34,9 @@ class peaPod
 	{
 	    $route = peaRoute::findMatch($uri, $this->options['routes']);
 	    if ( $route && $route->controller != NULL ){
-	        $controller = strtolower($r->controller) . "Controller";
+	        $controller = strtolower($route->controller) . "Controller";
 	        $controller = new $controller;
-	        $page = $controller->run(array_merge($_GET, $_POST, $r->variables));
+	        $page = $controller->run(array_merge($_GET, $_POST, $route->variables));
 	        echo $page;
 	        return;
 	    }
@@ -68,6 +68,8 @@ class peaPod
 		    }
 		    array_push($this->loaded_modules, $module);
 		    return true;
+		} else {
+		    die('No module exists with name: ' . $module);
 		}
 	}
 	

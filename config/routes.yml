@@ -9,5 +9,5 @@ base_url: /
 #	'/cart;$controller=shopping,$action=show_cart'
 #	'/$action/$id';$controller=blog'
 routes:
-	- /$controller/$action/$id;
 	- /;$controller=welcome
+	- /$controller/$action/$id;
