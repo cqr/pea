@@ -5,4 +5,4 @@ depends: mysqlconnector
 require: base.class.php
 receives:
     database_connected: SqloopBase::Connect 
-autoloader: SqloopBase->autoload($class);
+autoloader: SqloopBase::AutoLoad

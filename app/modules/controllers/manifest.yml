@@ -1,0 +1,7 @@
+name: Controllers
+description: Controllers for Request
+version: 0.1
+require: base.class.php
+receives:
+    template_rendered: BaseController::TemplateRendered
+autoloader: BaseController::AutoLoad 

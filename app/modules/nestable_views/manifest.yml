@@ -1,0 +1,6 @@
+name: NestableViews
+description: A View Renderer that is quick and nestable and chains it's way out.
+version: 0.1
+require: base.class.php
+receives:
+    render_template: NestableTemplatesBase::RenderTemplate

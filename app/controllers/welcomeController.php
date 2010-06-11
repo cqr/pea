@@ -1,5 +1,5 @@
 <?php
-class welcomeController extends applicationController
+class WelcomeController extends ApplicationController
 {
     function index()
     {

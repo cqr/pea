@@ -5,10 +5,12 @@ class peaMessenger {
     private static $queued, $listeners;
     
     static function Send($message) {
+        echo "\n\nRecieved message '$message'\n";
         $values = func_get_args();
         array_shift($values);
         if (isset(self::$listeners[$message])){
             foreach(self::$listeners[$message] as $listener){
+                echo "\nSending to: $listener\n";
                 call_user_func_array($listener, $values);
             }
         }

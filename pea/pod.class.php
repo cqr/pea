@@ -8,7 +8,6 @@
 
 // This class requires peaRoute
 require_once(BASEDIR.'/pea/route.class.php');
-require_once(BASEDIR.'/pea/baseController.class.php');
 require_once(BASEDIR.'/pea/messenger.class.php');
 
 /**
@@ -38,8 +37,7 @@ class peaPod
 	        $controller = strtolower($route->controller) . "Controller";
 	        $controller = new $controller;
 	        $page = $controller->run(array_merge($_GET, $_POST, $route->variables));
-	        echo $page;
-	        return;
+	        return $page;
 	    }
 		die("Error: no route matches '$uri'.");
 	}
@@ -86,22 +84,14 @@ class peaPod
 	    return file_exists(BASEDIR."/app/modules/$module/manifest.yml");
 	}
 	
-	public function __call($message, $args) {
+	public function __call($message, $args)
+	{
 	    array_unshift($args, $message);
 	    call_user_func_array('peaMessenger::Send', $args);
 	}
 	
-	static function AutoLoad($class) {
-	    if(preg_match('/^\w+Controller$/',$class)){
-            if(file_exists(BASEDIR."/app/controllers/$class.php")){
-                require(BASEDIR."/app/controllers/$class.php");
-                return true;
-            } else {
-                die("Error: unable to load controller $class.");
-            }
-        } elseif(file_exists(BASEDIR."/app/models/$class.php")){
-            require(BASEDIR."/app/models/$class.php");
-        }
+	static function AutoLoad($class)
+	{
         return false;
 	}
 }

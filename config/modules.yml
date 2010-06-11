@@ -1,3 +1,5 @@
 active:
     - sqloop
+    - nestable_views
+    - controllers
 installed: 
