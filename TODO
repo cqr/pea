@@ -4,12 +4,18 @@ TODO
 * peadmin
   * basic administrative features
   * possible editing features in the browser?
-* before and after filters for modules
+* Finish moving all non-kernel tasks to modules
 * Add a sandbox in which to render views
-  * sandbox should have viewHelper importing
-  * there should be no need for $this
-* modules should be able to automatically mixin
+  * Sandboxing for real requires 5.3 and some other fancy stuff
+    that really is beyond the scope of pea. Let's fake it by enforcing
+    rendering as the last action and moving everything necessary to the global
+    namespace. I know, I know...
+* Exceptions and a pretty exception handler for development.
+* Modules should be able to automatically mixin
   to certain classes
+  * This no longer seems necessary since the modules now completely
+    handle this stuff. That having been said, it was an interesting
+    problem and one I would still like to think about solving.
   * mixin:
       sqloopBase: models
       superController: controllers
